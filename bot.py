@@ -33,9 +33,9 @@ async def start_command(message:Message):
     telegram_id = message.from_user.id
     try:
         db.add_user(full_name=full_name,telegram_id=telegram_id) #foydalanuvchi bazaga qo'shildi
-        await message.answer(text="Assalomu alaykum, botimizga hush kelibsiz")
+        await message.answer(text="Assalomu alaykum, botimizga hush kelibsiz\nBu bot ismni style ko'rinishida qiladi")
     except:
-        await message.answer(text="Assalomu alaykum")
+        await message.answer(text="Assalomu alaykum\nism yuboring.....")
 
 
 
@@ -45,10 +45,10 @@ async def kanalga_obuna(message:Message):
     inline_channel = InlineKeyboardBuilder()
     for index,channel in enumerate(CHANNELS):
         ChatInviteLink = await bot.create_chat_invite_link(channel)
-        inline_channel.add(InlineKeyboardButton(text=f"{index+1}-kanal",url=ChatInviteLink.invite_link))
+        inline_channel.add(InlineKeyboardButton(text=f"{index+1}-kanal✅",url=ChatInviteLink.invite_link))
     inline_channel.adjust(1,repeat=True)
     button = inline_channel.as_markup()
-    await message.answer(f"{text} kanallarga azo bo'ling",reply_markup=button)
+    await message.answer(f"{text} Botdan to'liq foydalanish uchun\nKanallarga azo bo'ling❌",reply_markup=button)
 
 #nick
 @dp.message(F.text)
